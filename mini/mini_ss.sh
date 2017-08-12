@@ -54,8 +54,9 @@ cat > /etc/shadowsocks.json<<-EOF
 EOF
 
 #config dnsmasq
-curl https://g2w.online/ipset/gfwlist,208.67.222.222:443 -o ./shadowsocks_mini/gfwlist.conf
-cp -f ./shadowsocks_mini/gfwlist.conf /etc/dnsmasq.d/gfwlist.conf
+mkdir -p /extdisks/etc/dnsmasq.d/
+curl https://g2w.online/ipset/gfwlist,208.67.222.222:443 -o /extdisks/etc/dnsmasq.d/gfwlist.conf
+ln -s /extdisks/etc/dnsmasq.d/gfwlist.conf /etc/dnsmasq.d/gfwlist.conf
 
 #config firewall
 cp -f /etc/firewall.user /etc/firewall.user.back
